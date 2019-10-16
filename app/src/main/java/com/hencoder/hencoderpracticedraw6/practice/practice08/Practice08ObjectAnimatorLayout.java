@@ -2,6 +2,7 @@ package com.hencoder.hencoderpracticedraw6.practice.practice08;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -40,7 +41,9 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
                 // 2. 用 start() 执行动画
                 // *. 记得在 Practice08ObjectAnimatorView 中为 progress 添加 setter/ getter 方法！
 
-                ObjectAnimator animator = ObjectAnimator.ofFloat(view, "progress", 60);
+                ObjectAnimator animator = ObjectAnimator.ofFloat(view, "progress", 0,60);
+                animator.setInterpolator(new FastOutLinearInInterpolator());
+                animator.setDuration(2000);
                 animator.start();
             }
         });
