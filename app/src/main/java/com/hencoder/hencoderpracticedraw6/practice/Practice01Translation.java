@@ -1,7 +1,9 @@
 package com.hencoder.hencoderpracticedraw6.practice;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Outline;
+import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Build;
 import android.support.annotation.Nullable;
@@ -19,8 +21,12 @@ import static android.os.Build.VERSION.SDK_INT;
 import static com.hencoder.hencoderpracticedraw6.Utils.dpToPixel;
 
 public class Practice01Translation extends RelativeLayout {
+    private static final String TAG = "Practice01Translation";
     Button animateBt;
     ImageView imageView;
+
+    private int mCurIndex = 0;
+    private int count = SDK_INT > Build.VERSION_CODES.LOLLIPOP ? 5 : 4;
 
     public Practice01Translation(Context context) {
         super(context);
@@ -48,10 +54,65 @@ public class Practice01Translation extends RelativeLayout {
         animateBt.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(final View v) {
-                // TODO 在这里处理点击事件，通过 View.animate().translationX/Y/Z() 来让 View 平移
+
+                switch (mCurIndex) {
+                    case 0:
+                        imageView.animate().translationX(200);
+                        break;
+                    case 1:
+                        imageView.animate().translationX(0);
+                        break;
+                    case 2:
+                        imageView.animate().translationY(200);
+                        break;
+                    case 3:
+                        imageView.animate().translationY(-100);
+                        break;
+                    case 4:
+                        if (SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            imageView.animate().translationZ(15);
+                        }
+                        break;
+                    case 5:
+                        if (SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            imageView.animate().translationZ(5);
+                        }
+                        break;
+                    default:
+
+                }
+                mCurIndex++;
+                if (mCurIndex > count) {
+                    mCurIndex = 0;
+                }
             }
         });
+
+
     }
+
+    Path path = new Path();
+    Paint mPaint = new Paint();
+
+    {
+
+        path.moveTo(50, dpToPixel(10));
+        path.lineTo(dpToPixel(7), dpToPixel(2));
+        path.lineTo(dpToPixel(116), dpToPixel(58));
+        path.lineTo(dpToPixel(116), dpToPixel(70));
+        path.lineTo(dpToPixel(7), dpToPixel(128));
+        path.lineTo(50, dpToPixel(120));
+        path.close();
+        mPaint.setStyle(Paint.Style.STROKE);
+    }
+
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+        canvas.drawPath(path, mPaint);
+    }
+
 
     /**
      * 为音乐图标设置三角形的 Outline。

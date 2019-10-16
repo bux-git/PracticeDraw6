@@ -26,6 +26,8 @@ public class Practice03Scale extends RelativeLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    private int mCurIndex = 0;
+    private int count =5;
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -33,10 +35,35 @@ public class Practice03Scale extends RelativeLayout {
         animateBt = (Button) findViewById(R.id.animateBt);
         imageView = (ImageView) findViewById(R.id.imageView);
 
-        animateBt.setOnClickListener(new View.OnClickListener() {
+        animateBt.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(final View v) {
-                // TODO 在这里处理点击事件，通过 View.animate().scaleX/Y() 来让 View 放缩
+                switch (mCurIndex) {
+                    case 0:
+                        imageView.animate().scaleX(1.5f);
+                        break;
+                    case 1:
+                        imageView.animate().scaleX(1);
+                        break;
+                    case 2:
+                        imageView.animate().scaleY(1.5f);
+                        break;
+                    case 3:
+                        imageView.animate().scaleY(1);
+                        break;
+                    case 4:
+                        imageView.animate().rotation(180);
+                        break;
+                    case 5:
+                        imageView.animate().rotation(0);
+                        break;
+                    default:
+
+                }
+                mCurIndex++;
+                if (mCurIndex > count) {
+                    mCurIndex = 0;
+                }
             }
         });
     }
