@@ -43,7 +43,7 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
 
                 ObjectAnimator animator = ObjectAnimator.ofFloat(view, "progress", 0,60);
                 animator.setInterpolator(new FastOutLinearInInterpolator());
-                animator.setDuration(2000);
+                animator.setDuration(1000);
                 animator.start();
             }
         });
