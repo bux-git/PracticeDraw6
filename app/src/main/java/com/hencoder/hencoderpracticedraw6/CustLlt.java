@@ -2,8 +2,8 @@ package com.hencoder.hencoderpracticedraw6;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -37,6 +37,7 @@ public class CustLlt extends LinearLayout {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Log.d(TAG, "onTouchEvent: "+Utils.actionToString(event.getAction()));
+
         return super.onTouchEvent(event);
     }
 
@@ -51,4 +52,6 @@ public class CustLlt extends LinearLayout {
         Log.d(TAG, "onInterceptTouchEvent: "+Utils.actionToString(ev.getAction()));
         return super.onInterceptTouchEvent(ev);
     }
+
+
 }

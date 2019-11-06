@@ -2,7 +2,7 @@ package com.hencoder.hencoderpracticedraw6.practice.practice08;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.support.v4.view.animation.FastOutLinearInInterpolator;
+import androidx.interpolator.view.animation.FastOutLinearInInterpolator;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;

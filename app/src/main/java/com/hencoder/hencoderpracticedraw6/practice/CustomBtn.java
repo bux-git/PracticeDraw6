@@ -1,6 +1,7 @@
 package com.hencoder.hencoderpracticedraw6.practice;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -12,7 +13,7 @@ import com.hencoder.hencoderpracticedraw6.Utils;
  * author：bux on 2019/10/26 14:33
  * email: 471025316@qq.com
  */
-public class CustomBtn extends android.support.v7.widget.AppCompatButton {
+public class CustomBtn extends androidx.appcompat.widget.AppCompatButton {
     private static final String TAG = "CustomBtn";
     public CustomBtn(Context context) {
         super(context);
@@ -38,6 +39,11 @@ public class CustomBtn extends android.support.v7.widget.AppCompatButton {
     public boolean onTouchEvent(MotionEvent event) {
         Log.d(TAG, "onTouchEvent: "+Utils.actionToString(event.getAction()));
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
     }
 
 
